@@ -37,7 +37,17 @@ class Blog extends Component {
     render() {
         const posts = this.state.posts
         return (
-            <div>
+            <div className='Blog'>
+                <header>
+                    <ul>
+                        <li>
+                            <a href='/'>Home</a>
+                        </li>
+                        <li>
+                            <a href='/new-post'>New Post</a>
+                        </li>
+                    </ul>
+                </header>
                 <section className="Posts">
                     {posts.map((post) => {
                         return (<Post
