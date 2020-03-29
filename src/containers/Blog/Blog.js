@@ -5,7 +5,7 @@ import FullPost from '../../components/FullPost/FullPost';
 import NewPost from '../../components/NewPost/NewPost';
 import './Blog.css';
 import * as axios from "axios";
-import {Route} from 'react-router-dom'
+import {Route, Link} from 'react-router-dom'
 
 class Blog extends Component {
     state = {
@@ -42,10 +42,14 @@ class Blog extends Component {
                 <header>
                     <ul>
                         <li>
-                            <a href='/'>Home</a>
+                            <Link to='/'>Home</Link>
                         </li>
                         <li>
-                            <a href='/new-post'>New Post</a>
+                            <Link to={{
+                                pathname: '/new-post',
+                                hash: '#commit',
+                                search: '?quick-submit=true'
+                            }}>New Post</Link>
                         </li>
                     </ul>
                 </header>
