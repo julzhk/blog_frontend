@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './Post.css';
+import {withRouter} from 'react-router-dom';
 
 const post = (props) => (
     <article onClick={() => props.clicked(props.id)}
@@ -12,4 +13,5 @@ const post = (props) => (
     </article>
 );
 
-export default post;
+// pass routing data to children
+export default withRouter(post);
