@@ -5,6 +5,7 @@ import FullPost from '../../components/FullPost/FullPost';
 import NewPost from '../../components/NewPost/NewPost';
 import './Blog.css';
 import * as axios from "axios";
+import {Route} from 'react-router-dom'
 
 class Blog extends Component {
     state = {
@@ -48,7 +49,9 @@ class Blog extends Component {
                         </li>
                     </ul>
                 </header>
-                <section className="Posts">
+                <Route path='/' exact render={()=>{
+                    return (
+                        <section className="Posts">
                     {posts.map((post) => {
                         return (<Post
                             clicked={this.articleClicked}
@@ -60,13 +63,17 @@ class Blog extends Component {
                         />)
                     })}
                 </section>
+                    )
+                }} />
+                <Route path='/new-post' exact  component={NewPost} />
+
                 <section>
                     <FullPost
                         id={this.state.highlightPostId}
                     />
                 </section>
                 <section>
-                    <NewPost/>
+
                 </section>
             </div>
         );
