@@ -5,7 +5,7 @@ import FullPost from '../../components/FullPost/FullPost';
 import NewPost from '../../components/NewPost/NewPost';
 import './Blog.css';
 import * as axios from "axios";
-import {Link,NavLink, Route} from 'react-router-dom'
+import {NavLink, Route} from 'react-router-dom'
 
 class Blog extends Component {
     state = {
@@ -44,14 +44,21 @@ class Blog extends Component {
                 <header>
                     <ul>
                         <li>
-                            <NavLink exact to='/'>Home</NavLink>
+                            <NavLink exact
+                                     activeClassName="homeclass"
+                                     to='/'>Home</NavLink>
                         </li>
                         <li>
-                            <NavLink to={{
-                                pathname: '/new-post',
-                                hash: '#commit',
-                                search: '?quick-submit=true'
-                            }}>New Post</NavLink>
+                            <NavLink
+                                activeStyle={{
+                                    color: 'black',
+                                    backgroundColor: 'red'
+                                }}
+                                to={{
+                                    pathname: '/new-post',
+                                    hash: '#commit',
+                                    search: '?quick-submit=true'
+                                }}>New Post</NavLink>
                         </li>
                     </ul>
                 </header>

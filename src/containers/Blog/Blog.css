@@ -30,3 +30,7 @@
 .Blog a.active {
     color: yellowgreen;
 }
+.Blog a.homeclass {
+    color: blueviolet;
+    background-color: #C0DDF5;
+}
