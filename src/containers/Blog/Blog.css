@@ -22,8 +22,11 @@
     text-decoration: none;
     color: brown;
 }
+
 .Blog a:hover,
-.Blog a:active
-{
+.Blog a:active {
     color: #521751;
+}
+.Blog a.active {
+    color: yellowgreen;
 }
