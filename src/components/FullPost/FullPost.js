@@ -8,7 +8,7 @@ class FullPost extends Component {
         data: {}
     }
 
-    componentDidUpdate() {
+    componentDidMount() {
         if (this.props.id ) {
             if(this.state.data && this.state.data.id !==this.props.id){
             console.log('full')

@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 
 import Post from '../../components/Post/Post';
-import FullPost from '../../components/FullPost/FullPost';
 import NewPost from '../../components/NewPost/NewPost';
 import './Blog.css';
 import * as axios from "axios";
-import {NavLink, Route} from 'react-router-dom'
+import {Link, NavLink, Route} from 'react-router-dom'
+import FullPost from "../../components/FullPost/FullPost";
 
 class Blog extends Component {
     state = {
@@ -18,7 +18,7 @@ class Blog extends Component {
 
         axios.get('/posts').then(
             (response) => {
-                const posts = response.data.slice(0, 4)
+                const posts = response.data.slice(0, 6)
                 const updatedPosts = posts.map((post) => {
                     return {
                         ...post,
@@ -66,28 +66,31 @@ class Blog extends Component {
                     return (
                         <section className="Posts">
                             {posts.map((post) => {
-                                return (<Post
-                                    clicked={this.articleClicked}
-                                    id={post.id}
-                                    key={post.id}
-                                    title={post.title}
-                                    body={post.body}
-                                    author={post.author}
-                                />)
+                                return (
+                                    <Link key={post.id} exact to={'/post/' + post.id}>
+                                        <Post
+                                            clicked={this.articleClicked}
+                                            id={post.id}
+                                            key={post.id}
+                                            title={post.title}
+                                            body={post.body}
+                                            author={post.author}
+                                        />
+                                    </Link>)
                             })}
                         </section>
                     )
                 }}/>
                 <Route path='/new-post' exact component={NewPost}/>
-
-                <section>
-                    <FullPost
-                        id={this.state.highlightPostId}
-                    />
-                </section>
-                <section>
-
-                </section>
+                <Route path='/post/:id' render={(props) => {
+                    console.log(props)
+                    return (<section>
+                        <FullPost
+                            id={props.match.params.id}
+                        />
+                    </section>)
+                }}
+                />
             </div>
         );
     }
